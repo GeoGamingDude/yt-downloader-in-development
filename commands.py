@@ -12,4 +12,7 @@ def get_video(yt:str):
 def get_audio(yt:str):
     yt = YouTube(yt)
     yt = yt.streams.filter(only_audio=True)
-    yt.first().download(".\Downloads\Audios")
+    current_directory = os.getcwd()
+    current_directory = current_directory.replace("\dist", "\Downloads\Audios")
+    end_directory = os.chdir(current_directory)
+    yt.first().download()
